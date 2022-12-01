@@ -1,10 +1,6 @@
 pipeline {
   agent any
-    
-  tools {
-	nodejs 'NodeJS 8.19.2'
-       }
-    
+        
   stages {
         
     stage('Git') {
