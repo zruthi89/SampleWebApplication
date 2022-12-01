@@ -1,7 +1,9 @@
 pipeline {
   agent any
     
-  tools {nodejs 'NodeJS 8.19.2'}
+  tools {
+	nodejs 'NodeJS 8.19.2'
+       }
     
   stages {
         
@@ -19,8 +21,7 @@ pipeline {
          bat 'npm start'
       }
     }  
-    
-            
+           
     stage('Test') {
       steps {
 	echo 'Test...'
