@@ -7,7 +7,7 @@ pipeline {
       steps {
 	 echo 'Build...'
          bat 'npm install'
-         bat 'npm start'
+         bat 'npm run build'
       }
     }  
            
