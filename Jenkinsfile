@@ -19,12 +19,12 @@ pipeline {
       post {
            success {
 		script {
-		  sh "exit 0"
+		  bat "exit 0"
 		}
            }
            failure {
                 script{
-                   sh "exit 1"
+                   bat "exit 1"
                     }
                 }
 	}
