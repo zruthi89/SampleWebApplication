@@ -14,6 +14,7 @@ pipeline {
     stage('Test') {
       steps {
 	echo 'Test...'
+	bat 'npm install -g jest'
 	bat 'npm run test a'
       }
       post {
