@@ -24,7 +24,7 @@ pipeline {
            }
            failure {
                 script{
-                   bat "exit 1"
+                   bat "exit 0"
                     }
                 }
 	}
