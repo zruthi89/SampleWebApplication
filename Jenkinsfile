@@ -15,6 +15,8 @@ pipeline {
       steps {
 	echo 'Test...'
 	bat 'npm run test a'
+	bat 'npm run coverage a'
+	bat "exit 0"   
       }
       post {
            success {
