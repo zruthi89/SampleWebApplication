@@ -26,7 +26,7 @@ pipeline {
            }
            failure {
                 script{
-                   bat "exit 0"
+                   bat "exit 1"
                     }
                 }
 	}
@@ -35,6 +35,7 @@ pipeline {
     stage('Deploy') {
        steps {
           echo 'Deploying....'
+	  bat "npm start"
      }
     }
 	  
