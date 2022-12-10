@@ -9,7 +9,7 @@ function App() {
         </p>
         <video
           id="my-video"
-          class="video-js"
+          className="video-js"
           controls
           preload="auto"
           width="880"
