@@ -13,19 +13,20 @@ pipeline {
            
     stage('Test') {
       steps {
-	echo 'Test...'
-	bat 'npm install -g jest'
-	bat 'npm run test a'
+          echo 'Test...'
+          bat 'npm run test a'
+          bat 'npm run coverage a'
+          bat "exit 0"   
       }
       post {
            success {
-		script {
-		  bat "exit 0"
-		}
+                script {
+                  bat "exit 0"
+                }
            }
            failure {
                 script{
-                   bat "exit 0"
+                   bat "exit 1"
                     }
                 }
 	}
@@ -36,13 +37,29 @@ pipeline {
           echo 'Deploying....'
      }
     }
-
-    post{
-        always{
-            emailext to: "zruthimurali@gmail.com",
-            subject: "jenkins build:${currentBuild.currentResult}: ${env.JOB_NAME}",
-            body: "${currentBuild.currentResult}: Job ${env.JOB_NAME}\nMore Info can be found here: ${env.BUILD_URL}"
-        }
-    }
+	  
   }
+	
+//    post {
+//         failure {
+//               mail to: 'zruthimurali@gmail.com',
+//                  cc : 'zruthimurali@gamil.com',
+//                 subject: "FAILED: Build ${env.JOB_NAME}", 
+//                 body: "Build failed ${env.JOB_NAME} build no: ${env.BUILD_NUMBER}.\n\nView the log at:\n ${env.BUILD_URL}\n\nBlue Ocean:\n${env.RUN_DISPLAY_URL}"
+//         }
+    
+//     	success{
+//             mail to: 'zruthimurali@gmail.com',
+//                  cc : 'zruthimurali@gmail.com',
+//                 subject: "SUCCESSFUL: Build ${env.JOB_NAME}", 
+//                 body: "Build Successful ${env.JOB_NAME} build no: ${env.BUILD_NUMBER}\n\nView the log at:\n ${env.BUILD_URL}\n\nBlue Ocean:\n${env.RUN_DISPLAY_URL}"
+//         }
+        
+//         aborted{
+//             mail to: 'zruthimurali@gmail.com',
+//                  cc : 'zruthimurali@gmail.com',
+//                 subject: "ABORTED: Build ${env.JOB_NAME}", 
+//                 body: "Build was aborted ${env.JOB_NAME} build no: ${env.BUILD_NUMBER}\n\nView the log at:\n ${env.BUILD_URL}\n\nBlue Ocean:\n${env.RUN_DISPLAY_URL}"
+//         }
+//     }
 }
